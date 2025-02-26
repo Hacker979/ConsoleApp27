@@ -8,20 +8,20 @@ namespace ConsoleApp5
 {
     class Program
     {
-        static int[] Sort(int[] mas)
+        static void Sort(int[] mas)
         {
-            int a = 0;
+            int a = mas[0];
+            int max = 0;
             for (int i = 0; i < mas.Length - 1; i++)
             {
-                for (int j = i + 1; j < mas.Length; j++)
-                    if (mas[i] > mas[j])
+                    if (a < mas[i])
                     {
                         a = mas[i];
-                        mas[i] = mas[j];
-                        mas[j] = a;
+                        max = i;
                     }
             }
-            return mas;
+            Console.WriteLine($"\nmax = mas[{max}]");
+
         }
     static void PrintMas(int[] mas)
     {
@@ -32,14 +32,14 @@ namespace ConsoleApp5
     }
     static void Mas()
     {
-        int[] mas = new int[5];
-        Random rand = new Random();
+        int[] mas = new int[5] {2,4,3,6,8};
+
         for (int i = 0; i < mas.Length; i++)
         {  
-                mas[i] = rand.Next(-100, 100);
                 Console.WriteLine($"mas[{i}] = {mas[i]}");
         }
-        PrintMas(Sort(mas));
+        PrintMas(mas);
+        Sort(mas);
     }
 
     static void Main(string[] args)
