@@ -8,42 +8,45 @@ namespace ConsoleApp5
 {
     class Program
     {
-        static int[] Reverse(int[] mas)
+        static int[] Sort(int[] mas)
         {
-            int b = 0;
-            int[] Newmas = new int[mas.Length];
-            for (int i = mas.Length - 1; i >= 0; i--)
-
+            int a = 0;
+            for (int i = 0; i < mas.Length - 1; i++)
             {
-                Newmas[b] = mas[i];
-                b++;
+                for (int j = i + 1; j < mas.Length; j++)
+                    if (mas[i] > mas[j])
+                    {
+                        a = mas[i];
+                        mas[i] = mas[j];
+                        mas[j] = a;
+                    }
             }
-            return Newmas;
+            return mas;
         }
-        static void PrintMas(int[] mas)
+    static void PrintMas(int[] mas)
+    {
+        foreach (int i in mas)
         {
-            foreach (int i in mas)
-            {
-                Console.Write(i + " ");
-            }
-        }
-        static void Mas()
-        {
-            int[] mas = new int[5];
-
-            for (int i = 0; i < mas.Length; i++)
-            {
-                Console.Write($"mas[{i}] = ");
-                mas[i] = int.Parse(Console.ReadLine());
-            }
-            PrintMas(Reverse(mas));
-        }
-
-        static void Main(string[] args)
-        {
-            Mas();
-
-            Console.Read();
+            Console.Write(i + " ");
         }
     }
+    static void Mas()
+    {
+        int[] mas = new int[5];
+        Random rand = new Random();
+        for (int i = 0; i < mas.Length; i++)
+        {  
+                mas[i] = rand.Next(-100, 100);
+                Console.WriteLine($"mas[{i}] = {mas[i]}");
+        }
+        PrintMas(Sort(mas));
+    }
+
+    static void Main(string[] args)
+    {
+        Mas();
+
+        Console.Read();
+    }
+}
 }
