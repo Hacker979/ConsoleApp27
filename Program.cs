@@ -10,17 +10,36 @@ namespace ConsoleApp5
     {
         static void Sort(int[] mas)
         {
+            int razn = 0;
+            int temp = 0;
             int a = mas[0];
+            int b = mas[0];
             int max = 0;
-            for (int i = 0; i < mas.Length - 1; i++)
+            int min = 0;
+            for (int i = 1; i < mas.Length; i++)
             {
-                    if (a < mas[i])
-                    {
-                        a = mas[i];
-                        max = i;
-                    }
+                if (a < mas[i])
+                {
+                    a = mas[i];
+                    max = i;
+                }
+                if (b > mas[i])
+                {
+                    b = mas[i];
+                    min = i;
+                }
             }
-            Console.WriteLine($"\nmax = mas[{max}]");
+
+            razn = max - min;
+
+            Console.WriteLine($"\nmax: mas[{max}] = {mas[max]}");
+            Console.WriteLine($"min: mas[{min}] = {mas[min]}");
+            Console.WriteLine($"количество элементов между максимальным и минимальным элементами = {razn}");
+
+            temp = mas[max];
+            mas[max] = mas[min];
+            mas[min] = temp;
+
 
         }
     static void PrintMas(int[] mas)
@@ -32,14 +51,16 @@ namespace ConsoleApp5
     }
     static void Mas()
     {
-        int[] mas = new int[5] {2,4,3,6,8};
-
+        int[] mas = new int[5];
         for (int i = 0; i < mas.Length; i++)
-        {  
-                Console.WriteLine($"mas[{i}] = {mas[i]}");
+        {
+            Console.Write($"mas[{i}] = ");
+            mas[i] = int.Parse(Console.ReadLine());
         }
-        PrintMas(mas);
+
         Sort(mas);
+        Console.Write("\nпоменять местами максимальный и минимальный элементы, вывести одномерный массив: ");
+        PrintMas(mas);
     }
 
     static void Main(string[] args)
