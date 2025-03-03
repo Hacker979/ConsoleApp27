@@ -42,32 +42,32 @@ namespace ConsoleApp5
 
 
         }
-    static void PrintMas(int[] mas)
-    {
-        foreach (int i in mas)
+        static void PrintMas(int[] mas)
         {
-            Console.Write(i + " ");
+            foreach (int i in mas)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        static void Mas()
+        {
+            int[] mas = new int[5];
+            for (int i = 0; i < mas.Length; i++)
+            {
+                Console.Write($"mas[{i}] = ");
+                mas[i] = int.Parse(Console.ReadLine());
+            }
+
+            Sort(mas);
+            Console.Write("\nпоменять местами максимальный и минимальный элементы, вывести одномерный массив: ");
+            PrintMas(mas);
+        }
+    
+        static void Main(string[] args)
+        {
+            Mas();
+
+            Console.Read();
         }
     }
-    static void Mas()
-    {
-        int[] mas = new int[5];
-        for (int i = 0; i < mas.Length; i++)
-        {
-            Console.Write($"mas[{i}] = ");
-            mas[i] = int.Parse(Console.ReadLine());
-        }
-
-        Sort(mas);
-        Console.Write("\nпоменять местами максимальный и минимальный элементы, вывести одномерный массив: ");
-        PrintMas(mas);
-    }
-
-    static void Main(string[] args)
-    {
-        Mas();
-
-        Console.Read();
-    }
-}
 }
